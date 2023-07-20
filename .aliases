@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ~="cd ~"
+alias cl="clear"
+# Use colors in coreutils utilities output
+alias ls='ls -G'
+alias grep='grep --color'
+
+# ls aliases
+alias ll='ls -lah'
+alias la='ls -A'
+
+# Aliases to protect against overwriting
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias air='$(go env GOPATH)/bin/air'
+
+# git aliases
+alias ga="git add"
+alias gb="git branch"
+alias gco="git checkout"
+alias gc="git commit"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gl="git log --graph --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
+alias gp="git pull --rebase"
+alias gs="git status"
+alias gst="git stash"
+alias gstu="git stash -u"
+alias gfab="git branch -r | grep -v '\\->' | sed \"s,\\\x1B\\[[0-9;]*[a-zA-Z],,g\" | while read remote; do git branch --track \"\${remote#origin/}\" \"\$remote\"; done ;git fetch --all; git pull --all"
+
+# Create a directory and cd into it
+mcd() {
+    mkdir "${1}" && cd "${1}"
+}
+
+# Jump to directory containing file
+jump() {
+    cd "$(dirname ${1})"
+}
+
+# Go up [n] directories
+up()
+{
+    local cdir="$(pwd)"
+    if [[ "${1}" == "" ]]; then
+        cdir="$(dirname "${cdir}")"
+    elif ! [[ "${1}" =~ ^[0-9]+$ ]]; then
+        echo "Error: argument must be a number"
+    elif ! [[ "${1}" -gt "0" ]]; then
+        echo "Error: argument must be positive"
+    else
+        for ((i=0; i<${1}; i++)); do
+            local ncdir="$(dirname "${cdir}")"
+            if [[ "${cdir}" == "${ncdir}" ]]; then
+                break
+            else
+                cdir="${ncdir}"
+            fi
+        done
+    fi
+    cd "${cdir}"
+}
