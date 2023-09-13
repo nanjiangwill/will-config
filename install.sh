@@ -22,9 +22,19 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ## install zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# Install Miniconda
-cd $CACHE_FOLDER
-wget $CONDA_DOWNLOAD_LINK
-chmod +x Miniconda3-latest-Linux-x86_64.sh
-./Miniconda3-latest-Linux-x86_64.sh
-# remember to install the miniconda3 to $(CACHE_FOLDER/miniconda3)
+# # Install Miniconda
+# cd $CACHE_FOLDER
+# wget $CONDA_DOWNLOAD_LINK
+# chmod +x Miniconda3-latest-Linux-x86_64.sh
+# ./Miniconda3-latest-Linux-x86_64.sh
+# # remember to install the miniconda3 to $(CACHE_FOLDER/miniconda3)
+
+# Then change theme to ZSH_THEME="powerlevel10k/powerlevel10k"
+# then restart
+# change
+# plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+# source $ZSH/oh-my-zsh.sh
+# source ~/.aliases
+
+# then conda init zsh if needed
