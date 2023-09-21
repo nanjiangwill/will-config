@@ -1,11 +1,11 @@
 CACHE_FOLDER="/trunk/nan"
 CONDA_DOWNLOAD_LINK="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-CONFIG_FOLDER="~/will-config"
+CONFIG_FOLDER="`pwd`/will-config"
 
 
 
-cp ${CONFIG_FOLDER/.vimrc} ~
-cp ${CONFIG_FOLDER/.aliases} ~
+cp ${CONFIG_FOLDER}/.vimrc ~
+cp ${CONFIG_FOLDER}/.aliases ~
 # Install Oh My ZSH
 yes | sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
